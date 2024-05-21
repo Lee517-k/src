@@ -31,3 +31,8 @@ elseif(APPLE)
 endif()
 
 
+
+install(DIRECTORY
+  include
+  src
+  DESTINATION share/${target_name})
