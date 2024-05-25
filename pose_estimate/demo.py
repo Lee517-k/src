@@ -9,19 +9,6 @@ from modules.input_reader import VideoReader, ImageReader
 from modules.draw import Plotter3d, draw_poses
 from modules.parse_poses import parse_poses
 
-import rclpy
-from rclpy.node import Node
-from sensor_msgs.msg import Image
-from cv_bridge import CvBridge
-
-class ImageSubscriber(Node) :
-    def __init__(self) :
-        super.__init__('image_subscriber')
-        self.subscription = self.create_subscription(Image, '/rgb_left', self.listener_callback, 10)
-    
-    def listener_callback(self) :
-
-
 
 def rotate_poses(poses_3d, R, t):
     R_inv = np.linalg.inv(R)
@@ -58,6 +45,7 @@ if __name__ == '__main__':
                         help='Optional. Path to file with camera extrinsics.',
                         type=str, default=None)
     parser.add_argument('--fx', type=np.float32, default=-1, help='Optional. Camera focal length.')
+    
     args = parser.parse_args()
 
     if args.video == '' and args.images == '':

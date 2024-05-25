@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'pose_estimation = pose_estimate.pose_estimation:main'
         ],
     },
 )
